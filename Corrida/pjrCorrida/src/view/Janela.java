@@ -1,4 +1,4 @@
- package view;
+package view;
 import java.awt.Color;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import control.HeliThread;
+import control.CarroThread;
 
 @SuppressWarnings("serial")
 public class Janela extends JFrame implements ActionListener {
@@ -19,9 +19,9 @@ public class Janela extends JFrame implements ActionListener {
     private JButton btnCancel;
     private JLabel lblPista;
     private JLabel lblVelocimetro;
-    private ImageIcon imgHeli1;
-    private ImageIcon imgHeli2;
-    private ImageIcon imgHeli3;
+    private ImageIcon imgCarro1;
+    private ImageIcon imgCarro2;
+    private ImageIcon imgCarro3;
     private ImageIcon pista;
     private ImageIcon velocimetro;
    
@@ -54,10 +54,10 @@ public class Janela extends JFrame implements ActionListener {
                   // POSIONADO OS BOT�ES
         this.btnCorrida.setBounds(500, 550, 120, 50);
         this.btnCancel.setBounds(640, 550, 120, 50);
-                    // INSERINDO AS IMAGENS DOS HeliC�PTEROS
-        imgHeli1 = new ImageIcon("./src/imagens/heli1.png");
-        imgHeli2 = new ImageIcon("./src/imagens/heli2.png");
-        imgHeli3 = new ImageIcon("./src/imagens/heli3.png");
+                    // INSERINDO AS IMAGENS DOS CARROS
+        imgCarro1 = new ImageIcon("./src/imagens/heli1.png");
+        imgCarro2 = new ImageIcon("./src/imagens/heli2.png");
+        imgCarro3 = new ImageIcon("./src/imagens/heli3.png");
        
         this.lblPista.add(btnCorrida);
         this.lblPista.add(btnCancel);
@@ -78,20 +78,20 @@ public class Janela extends JFrame implements ActionListener {
 
     }
      // INSERINDO AS JLABELS DOS CARROS
-     public JLabel JLabelHelis(String nome, ImageIcon img, int posX, int posY) {
-        HeliThread heli = new HeliThread(nome, img, posX, posY);
-        heli.setSize(256, 141);
-        heli.setVisible(true);
-        this.add(heli);
-        return heli;
+     public JLabel JLabelCarros(String nome, ImageIcon img, int posX, int posY) {
+        CarroThread carro = new CarroThread(nome, img, posX, posY);
+        carro.setSize(256, 141);
+        carro.setVisible(true);
+        this.add(carro);
+        return carro;
     }
           // PROGRAMANDO A A��O DOS BOT�ES
     @Override
     public void actionPerformed(ActionEvent dispara) {
         if (dispara.getSource() == this.btnCorrida) {
-            this.lblPista.add(JLabelHelis("Heli1", imgHeli1, 0, 50));
-            this.lblPista.add(JLabelHelis("Heli2", imgHeli2, 0, 200));
-            this.lblPista.add(JLabelHelis("Heli3", imgHeli3, 0, 350));
+            this.lblPista.add(JLabelCarros("Helicóptero 1", imgCarro1, 0, 50));
+            this.lblPista.add(JLabelCarros("Helicóptero 2", imgCarro2, 0, 200));
+            this.lblPista.add(JLabelCarros("Helicóptero 3", imgCarro3, 0, 350));
         }
         if (dispara.getSource() == this.btnCancel) {
             System.exit(0);
